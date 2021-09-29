@@ -2,5 +2,8 @@
   "name": "vercel-serverless",
   "version": "1.0.0",
   "author": "DoubleBird",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.21.4"
+  }
 }
