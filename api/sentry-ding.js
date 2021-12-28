@@ -8,13 +8,13 @@ module.exports = async (req, res) => {
   const { access_token } = query;
 
   if (access_token) {
-    // const { data } = body;
+    const { data } = body;
     // sentry 9.1.2
 
     const reportMsg =
       `sentry\n` +
       `Project: ${body.project_name}\n` +
-      `Error: ${body.message}\n` +
+      `Error: ${data.event.title}\n` +
       `Sentry Issue: ${body.url}`;
 
     const { data: resData } = await axios({
