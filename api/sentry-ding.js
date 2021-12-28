@@ -12,7 +12,7 @@ module.exports = async (req, res) => {
 
     const reportMsg =
       `sentry\n` +
-      `Project: ${data.actor.name}\n` +
+      `Project: ${body.actor.name}\n` +
       `Error: ${data.event.title}\n` +
       `Sentry Issue: ${data.event.issue_url}`;
 
