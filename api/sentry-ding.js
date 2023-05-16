@@ -5,7 +5,7 @@ const DING_API = "https://oapi.dingtalk.com/robot/send";
 module.exports = async (req, res) => {
   const { body, query } = req;
   console.log(body);
-  const { access_token } = query;
+  const { access_token, atUserIds = [] } = query;
 
   if (access_token) {
     // sentry 9.1.2
@@ -24,7 +24,8 @@ module.exports = async (req, res) => {
         msgtype: "text",
         text: {
           content: reportMsg
-        }
+        },
+        atUserIds: atUserIds.split(',')
       }
     });
     res.send(resData);
