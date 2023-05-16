@@ -5,7 +5,8 @@ const DING_API = "https://oapi.dingtalk.com/robot/send";
 module.exports = async (req, res) => {
   const { body, query } = req;
   console.log(body);
-  const { access_token, atUserIds = [] } = query;
+  const { access_token, atUserIds = '' } = query;
+  const atUsers = atUserIds.split(',');
 
   if (access_token) {
     // sentry 9.1.2
@@ -14,7 +15,8 @@ module.exports = async (req, res) => {
       `sentry\n` +
       `Project: ${body.project_name}\n` +
       `Error: ${body.event.title}\n` +
-      `Sentry Issue: ${body.url}`;
+      `Sentry Issue: ${body.url}` +
+      `atUsers.map((id) => `@${id}`).join(' ')`;
 
     const { data: resData } = await axios({
       method: "post",
@@ -26,7 +28,7 @@ module.exports = async (req, res) => {
           content: reportMsg
         },
         at: {
-          atUserIds: atUserIds.split(',')
+          atUserIds: atUsers
         }
       }
     });
