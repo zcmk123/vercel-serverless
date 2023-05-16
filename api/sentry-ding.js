@@ -25,7 +25,9 @@ module.exports = async (req, res) => {
         text: {
           content: reportMsg
         },
-        atUserIds: atUserIds.split(',')
+        at: {
+          atUserIds: atUserIds.split(',')
+        }
       }
     });
     res.send(resData);
