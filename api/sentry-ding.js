@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
       `Project: ${body.project_name}\n` +
       `Error: ${body.event.title}\n` +
       `Sentry Issue: ${body.url}\n` +
-      `atUsers.map((id) => `@${id}`).join(' ')`;
+      `${atUsers.map((id) => `@${id}`).join(' ')}`;
 
     const { data: resData } = await axios({
       method: "post",
