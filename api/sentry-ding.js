@@ -10,6 +10,9 @@ module.exports = async (req, res) => {
     if (access_token) {
         // sentry 9.1.2
 
+        console.log('incoming query', query);
+        console.log('incoming body', body);
+
         const reportMsg =
             `sentry\n` +
             `Project: ${body.project_name}\n` +
