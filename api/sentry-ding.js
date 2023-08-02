@@ -15,6 +15,7 @@ module.exports = async (req, res) => {
 
         const reportMsg =
             `sentry\n` +
+            `Triggering Rules: ${body.triggering_rules.join(', ')}\n` +
             `Project: ${body.project_name}\n` +
             `Error: ${body.event.title}\n` +
             `Sentry Issue: ${body.url}\n` +
