@@ -17,6 +17,8 @@ module.exports = async (req, res) => {
             `sentry\n` +
             `Triggering Rules: ${body.triggering_rules.join(', ')}\n` +
             `Project: ${body.project_name}\n` +
+            `Release: ${body.release}\n` +
+            `Environment: ${body.environment}\n` +
             `Error: ${body.event.title}\n` +
             `Sentry Issue: ${body.url}\n` +
             `${atUsers.map((id) => `@${id}`).join(' ')}`;
