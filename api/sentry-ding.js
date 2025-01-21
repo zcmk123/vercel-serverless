@@ -13,13 +13,18 @@ module.exports = async (req, res) => {
         console.log('incoming query', query);
         console.log('incoming body', body);
 
+        // compitable with new sentry
+
+        const event = body.event;
+        const env = event.environment || body.environment;
+
         const reportMsg =
             `sentry\n` +
             `Triggering Rules: ${body.triggering_rules.join(', ')}\n` +
             `Project: ${body.project_name}\n` +
             `Release: ${body.release}\n` +
-            `Environment: ${body.environment}\n` +
-            `Error: ${body.event.title}\n` +
+            `Environment: ${env}\n` +
+            `Error: ${event.title}\n` +
             `Sentry Issue: ${body.url}\n` +
             `${atUsers.map((id) => `@${id}`).join(' ')}`;
 
