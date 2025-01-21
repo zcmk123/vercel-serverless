@@ -17,12 +17,13 @@ module.exports = async (req, res) => {
 
         const event = body.event;
         const env = event.environment || body.environment;
+        const release = event.release || body.release;
 
         const reportMsg =
             `sentry\n` +
             `Triggering Rules: ${body.triggering_rules.join(', ')}\n` +
             `Project: ${body.project_name}\n` +
-            `Release: ${body.release}\n` +
+            `Release: ${release}\n` +
             `Environment: ${env}\n` +
             `Error: ${event.title}\n` +
             `Sentry Issue: ${body.url}\n` +
